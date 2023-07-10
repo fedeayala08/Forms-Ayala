@@ -1,0 +1,88 @@
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="userModel" class="row col-8 g-3">
+            <div class="mb-3">
+                <label for="InputName" class="form-label">Nombre</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="name" 
+                    formControlName="name" 
+                    aria-describedby="nombre"
+                    [class.is-invalid]="nameControl.touched && nameControl.invalid "
+                    >
+                    <div class="invalid-feedback">
+                        El campo es requerido
+                      </div>
+            </div>
+            <div class="mb-3">
+                <label for="InputSurname" class="form-label">Apellido</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="surname" 
+                    formControlName="surname" 
+                    aria-describedby="apellido"
+                    [class.is-invalid]="surnameControl.touched && surnameControl.invalid "
+                    >
+                    <div class="invalid-feedback">
+                        El campo es requerido
+                      </div>
+            </div>
+            <div class="mb-3">
+                <label for="InputAddress" class="form-label">Direccion</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="address"
+                    formControlName="address"  
+                    aria-describedby="direccion"
+                    >
+            </div>
+            <div class="mb-3">
+                <label for="InputCity" class="form-label">Ciudad</label>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    id="city" 
+                    formControlName= "city"
+                    aria-describedby="ciudad"
+                    >
+            </div>
+            <div class="mb-3">
+                <label for="InputEmail" class="form-label">Correo electrónico</label>
+                <input 
+                    type="email" 
+                    class="form-control" 
+                    id="email" 
+                    formControlName="email"
+                    aria-describedby="emailHelp"
+                    [class.is-invalid]="emailControl.touched && emailControl.invalid"
+                    >
+                    <div *ngIf="(emailControl.invalid && emailControl.touched) || emailControl.dirty">
+                        <small *ngIf="emailControl.touched && !emailControl.value" class="text-danger">El campo es requerido <br></small>           
+                        <small *ngIf="emailControl.invalid" class="text-danger">El mail es invalido</small>
+                    </div>          
+            </div>
+            <div class="mb-3">
+                <label for="InputPassword1" class="form-label">Contraseña</label>
+                <input 
+                    type="password" 
+                    class="form-control" 
+                    id="password"
+                    formControlName="password"
+                    [class.is-invalid]="passwordControl.touched && passwordControl.invalid "
+                    >
+                    <div *ngIf="(passwordControl.invalid && passwordControl.touched) || passwordControl.dirty">
+                        <small *ngIf="passwordControl.touched && !passwordControl.value" class="text-danger">El campo es requerido <br></small>           
+                        <small *ngIf="passwordControl.invalid" class="text-danger">La contraseña debe tener una longitud minima de 10 caracteres</small>
+                    </div> 
+            </div>
+            <button  (click)="onSubmit()"  type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        <!-- <div>
+            <h5>valor</h5>
+            <pre>{{userModel.value| json}}</pre>
+        </div> -->
+    </div>
+</div>
